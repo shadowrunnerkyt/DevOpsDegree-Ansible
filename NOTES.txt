@@ -1,0 +1,26 @@
+vagrant:vagrant
+
+[ubuntu]
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt -y upgrade
+sudo apt -y install software-properties-common
+sudo apt -y install ansible
+sudo apt update
+
+[centos]
+sudo yum update
+sudo yum -y install epel-release
+sudo yum -y install ansible
+sudo vi /etc/ansible/hosts
+ssh-keygen
+ssh-copy-id 192.168.33.30 # this fails to connect [access denied], need to copy key from ~/.ssh/id_rsa.pub manually
+ssh-copy-id 192.168.33.40 # worked just fine
+
+[ansible]
+ansible 192.168.33.30 -b -m apt -a "name=vim state=present" 
+# -b : become? for sudo
+# -m : module
+# -a : arguments
+ansible 192.168.33.40 -b -m yum -a "name=vim state=present"
+
