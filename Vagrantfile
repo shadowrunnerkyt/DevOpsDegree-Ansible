@@ -70,22 +70,21 @@ Vagrant.configure("2") do |config|
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.hostname = "ubuntu"
     ubuntu.vm.box = "ubuntu/bionic64"
-    ubuntu.vm.network "private_network", ip: "192.168.33.100"
+    ubuntu.vm.network "private_network", ip: "192.168.33.10"
   end
-  config.vm.define "db" do |db|
-    db.vm.hostname = "mongodb"
-    db.vm.box = "ubuntu/bionic64"
-    db.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.define "centos" do |centos|
+    centos.vm.hostname = "centos"
+    centos.vm.box = "bento/centos-7.4"
+    centos.vm.network "private_network", ip: "192.168.33.20"
   end
-  config.vm.define "app" do |app|
-    app.vm.hostname = "node"
-    app.vm.box = "node"
-    app.vm.box = "bento/centos-7.4"
-    app.vm.network "private_network", ip: "192.168.33.20"
+  config.vm.define "server1" do |server1|
+    server1.vm.hostname = "server1"
+    server1.vm.box = "ubuntu/bionic64"
+    server1.vm.network "private_network", ip: "192.168.33.30"
   end
-  config.vm.define "web" do |web|
-    web.vm.hostname = "nginx"
-    web.vm.box = "bento/centos-7.4"
-    web.vm.network "private_network", ip: "192.168.33.30"
+  config.vm.define "server2" do |server2|
+    server2.vm.hostname = "server2"
+    server2.vm.box = "bento/centos-7.4"
+    server2.vm.network "private_network", ip: "192.168.33.40"
   end
 end
