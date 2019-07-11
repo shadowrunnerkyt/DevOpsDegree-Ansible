@@ -28,4 +28,11 @@ ansible 192.168.33.30 -b -m apt -a "name=vim state=present"
 # -m : module
 # -a : arguments
 ansible 192.168.33.40 -b -m yum -a "name=vim state=present"
-
+- roles
+	http://galaxy.ansible.com/
+	mkdir /vagrant/roles
+	cd roles
+	ansible-galaxy init mongodb # initialize role, builds structure
+	ansible-vault encrypt ./mongodb/vars/secrets.yml
+	ansible-playbook -b -i hosts --ask-vault-pass mean.yml # use -b or this won't work at all
+	
