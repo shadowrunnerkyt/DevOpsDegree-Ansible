@@ -26,7 +26,7 @@
   pip:
     name: pymongo
     state: latest
-- name: Is authentiaction enabled?
+- name: Is authentication enabled?
   command: grep "^auth = true" /etc/mongodb.conf
   register: auth
   ignore_errors: yes
